@@ -426,15 +426,6 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Temas para las figuras</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">()</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;paper&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <section id="manejo-de-la-base-de-datos">
 <h2>Manejo de la base de datos<a class="headerlink" href="#manejo-de-la-base-de-datos" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -443,79 +434,143 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Leer los datos</span>
+<span class="n">temperature_URL</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/SandraMaldonado19/Dash_PF_Dataviz/main/originaldata_temp.csv&quot;</span>
+<span class="n">df_temperature</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">temperature_URL</span><span class="p">)</span>
 
-<span class="n">df_temperature</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./data/originaldata_temp.csv&#39;</span><span class="p">)</span>
 <span class="n">df_temperature</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Leer los datos</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">df_temperature</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./data/originaldata_temp.csv&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df_temperature</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">File c:\Users\Sandra\anaconda3\envs\dataviz_venv\lib\site-packages\pandas\io\parsers\readers.py:948,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">    </span><span class="mi">935</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">936</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">937</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">944</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">945</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">946</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">948</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">File c:\Users\Sandra\anaconda3\envs\dataviz_venv\lib\site-packages\pandas\io\parsers\readers.py:611,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">608</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">610</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">611</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">613</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">614</span>     <span class="k">return</span> <span class="n">parser</span>
-
-<span class="nn">File c:\Users\Sandra\anaconda3\envs\dataviz_venv\lib\site-packages\pandas\io\parsers\readers.py:1448,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1445</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1447</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1448</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-
-<span class="nn">File c:\Users\Sandra\anaconda3\envs\dataviz_venv\lib\site-packages\pandas\io\parsers\readers.py:1705,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1703</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1704</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1705</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1706</span>     <span class="n">f</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1707</span>     <span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1708</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1709</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1710</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1711</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1712</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1713</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1714</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1715</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1716</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">File c:\Users\Sandra\anaconda3\envs\dataviz_venv\lib\site-packages\pandas\io\common.py:863,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">858</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">859</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
-<span class="g g-Whitespace">    </span><span class="mi">860</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
-<span class="g g-Whitespace">    </span><span class="mi">861</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">862</span>         <span class="c1"># Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">863</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">864</span>             <span class="n">handle</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">866</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">867</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">868</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">869</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">871</span>         <span class="c1"># Binary mode</span>
-<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;./data/originaldata_temp.csv&#39;
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>january</th>
+      <th>february</th>
+      <th>march</th>
+      <th>april</th>
+      <th>may</th>
+      <th>june</th>
+      <th>july</th>
+      <th>august</th>
+      <th>september</th>
+      <th>october</th>
+      <th>november</th>
+      <th>december</th>
+      <th>yearmean</th>
+      <th>Unnamed: 14</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1850</td>
+      <td>-0.675</td>
+      <td>-0.333</td>
+      <td>-0.591</td>
+      <td>-0.589</td>
+      <td>-0.508</td>
+      <td>-0.344</td>
+      <td>-0.160</td>
+      <td>-0.208</td>
+      <td>-0.385</td>
+      <td>-0.533</td>
+      <td>-0.283</td>
+      <td>-0.404</td>
+      <td>-0.418</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1850</td>
+      <td>53.000</td>
+      <td>47.000</td>
+      <td>44.000</td>
+      <td>48.000</td>
+      <td>49.000</td>
+      <td>49.000</td>
+      <td>52.000</td>
+      <td>55.000</td>
+      <td>57.000</td>
+      <td>55.000</td>
+      <td>58.000</td>
+      <td>58.000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1851</td>
+      <td>-0.201</td>
+      <td>-0.469</td>
+      <td>-0.646</td>
+      <td>-0.542</td>
+      <td>-0.198</td>
+      <td>-0.137</td>
+      <td>-0.097</td>
+      <td>-0.102</td>
+      <td>-0.091</td>
+      <td>-0.008</td>
+      <td>-0.082</td>
+      <td>-0.228</td>
+      <td>-0.233</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1851</td>
+      <td>58.000</td>
+      <td>55.000</td>
+      <td>56.000</td>
+      <td>55.000</td>
+      <td>54.000</td>
+      <td>53.000</td>
+      <td>54.000</td>
+      <td>59.000</td>
+      <td>47.000</td>
+      <td>51.000</td>
+      <td>48.000</td>
+      <td>48.000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1852</td>
+      <td>-0.375</td>
+      <td>-0.477</td>
+      <td>-0.560</td>
+      <td>-0.585</td>
+      <td>-0.127</td>
+      <td>-0.084</td>
+      <td>0.005</td>
+      <td>-0.136</td>
+      <td>-0.002</td>
+      <td>-0.172</td>
+      <td>-0.305</td>
+      <td>0.065</td>
+      <td>-0.229</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -906,32 +961,32 @@ document.write(`
       <td>1850-01</td>
     </tr>
     <tr>
-      <th>174</th>
-      <td>1850</td>
-      <td>february</td>
-      <td>-0.333</td>
-      <td>1850-02</td>
+      <th>1</th>
+      <td>1851</td>
+      <td>january</td>
+      <td>-0.201</td>
+      <td>1851-01</td>
     </tr>
     <tr>
-      <th>348</th>
-      <td>1850</td>
-      <td>march</td>
-      <td>-0.591</td>
-      <td>1850-03</td>
+      <th>2</th>
+      <td>1852</td>
+      <td>january</td>
+      <td>-0.375</td>
+      <td>1852-01</td>
     </tr>
     <tr>
-      <th>522</th>
-      <td>1850</td>
-      <td>april</td>
-      <td>-0.589</td>
-      <td>1850-04</td>
+      <th>3</th>
+      <td>1853</td>
+      <td>january</td>
+      <td>-0.233</td>
+      <td>1853-01</td>
     </tr>
     <tr>
-      <th>696</th>
-      <td>1850</td>
-      <td>may</td>
-      <td>-0.508</td>
-      <td>1850-05</td>
+      <th>4</th>
+      <td>1854</td>
+      <td>january</td>
+      <td>-0.381</td>
+      <td>1854-01</td>
     </tr>
     <tr>
       <th>...</th>
@@ -941,43 +996,43 @@ document.write(`
       <td>...</td>
     </tr>
     <tr>
-      <th>869</th>
-      <td>2023</td>
-      <td>may</td>
-      <td>0.871</td>
-      <td>2023-05</td>
+      <th>2083</th>
+      <td>2019</td>
+      <td>december</td>
+      <td>1.037</td>
+      <td>2019-12</td>
     </tr>
     <tr>
-      <th>1043</th>
-      <td>2023</td>
-      <td>june</td>
-      <td>1.052</td>
-      <td>2023-06</td>
+      <th>2084</th>
+      <td>2020</td>
+      <td>december</td>
+      <td>0.693</td>
+      <td>2020-12</td>
     </tr>
     <tr>
-      <th>1217</th>
-      <td>2023</td>
-      <td>july</td>
-      <td>1.150</td>
-      <td>2023-07</td>
+      <th>2085</th>
+      <td>2021</td>
+      <td>december</td>
+      <td>0.751</td>
+      <td>2021-12</td>
     </tr>
     <tr>
-      <th>1391</th>
-      <td>2023</td>
-      <td>august</td>
-      <td>1.199</td>
-      <td>2023-08</td>
+      <th>2086</th>
+      <td>2022</td>
+      <td>december</td>
+      <td>0.768</td>
+      <td>2022-12</td>
     </tr>
     <tr>
-      <th>1565</th>
+      <th>2087</th>
       <td>2023</td>
-      <td>september</td>
-      <td>1.347</td>
-      <td>2023-09</td>
+      <td>december</td>
+      <td>-9.999</td>
+      <td>2023-12</td>
     </tr>
   </tbody>
 </table>
-<p>2085 rows × 4 columns</p>
+<p>2088 rows × 4 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
