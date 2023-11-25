@@ -64,10 +64,9 @@ top_years = df_tseries[df_tseries['year'] != current_year].groupby('year')['valu
 # Encuentra los valores máximos para cada mes
 max_values = df_tseries.groupby('month')['value'].max()
 
+
+
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
-
-
-
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -160,7 +159,7 @@ def update_graph(hoverData):
         'y': df_timeseries['value'],
         'type': 'line',
         'mode': 'lines',
-        'name': 'Original Data',
+        'name': 'Serie de tiempo',
         'line': {'color': 'blue'}
     })
 
@@ -170,7 +169,7 @@ def update_graph(hoverData):
         'y': df_timeseries['rolling_mean'],
         'type': 'line',
         'mode': 'lines',
-        'name': '12-Month Rolling Mean',
+        'name': 'Media móvil de 12 meses',
         'line': {'color': 'red'}
     })
 
@@ -180,7 +179,7 @@ def update_graph(hoverData):
         'y': df_timeseries['upper_band'],
         'type': 'line',
         'mode': 'lines',
-        'name': 'Upper Band',
+        'name': 'IC - 95%',
         'line': {'color': 'green', 'dash': 'dash'}
     })
 
@@ -189,7 +188,6 @@ def update_graph(hoverData):
         'y': df_timeseries['lower_band'],
         'type': 'line',
         'mode': 'lines',
-        'name': 'Lower Band',
         'line': {'color': 'green', 'dash': 'dash'}
     })
 
@@ -211,7 +209,7 @@ def update_graph(hoverData):
         'data': trace_data,
         'layout': {
             'xaxis': {'title': 'Fecha'},
-            'yaxis': {'title': 'Valor'},
+            'yaxis': {'title': 'Anomalía de temperatura (°C)'},
             'margin': {'b': 30, 'r': 10, 'l': 60, 't': 50},
             'legend': {'x': 0, 'y': 1}
         }
@@ -445,7 +443,7 @@ File [1;32mc:\Users\Sandra\anaconda3\envs\dataviz_venv\lib\site-packages\urllib
 [0;32m    220[0m     ) [38;5;28;01mfrom[39;00m [38;5;21;01me[39;00m
 [0;32m    222[0m [38;5;66;03m# Audit hooks are only available in Python 3.8+[39;00m
 
-[1;31mNewConnectionError[0m: <urllib3.connection.HTTPConnection object at 0x000001C83474FC70>: Failed to establish a new connection: [WinError 10049] La dirección solicitada no es válida en este contexto
+[1;31mNewConnectionError[0m: <urllib3.connection.HTTPConnection object at 0x000002188BDF9130>: Failed to establish a new connection: [WinError 10049] La dirección solicitada no es válida en este contexto
 
 The above exception was the direct cause of the following exception:
 
@@ -479,21 +477,21 @@ File [1;32mc:\Users\Sandra\anaconda3\envs\dataviz_venv\lib\site-packages\urllib
 [1;32m--> 515[0m     [38;5;28;01mraise[39;00m MaxRetryError(_pool, url, reason) [38;5;28;01mfrom[39;00m [38;5;21;01mreason[39;00m  [38;5;66;03m# type: ignore[arg-type][39;00m
 [0;32m    517[0m log[38;5;241m.[39mdebug([38;5;124m"[39m[38;5;124mIncremented Retry for (url=[39m[38;5;124m'[39m[38;5;132;01m%s[39;00m[38;5;124m'[39m[38;5;124m): [39m[38;5;132;01m%r[39;00m[38;5;124m"[39m, url, new_retry)
 
-[1;31mMaxRetryError[0m: HTTPConnectionPool(host='0.0.0.0', port=9000): Max retries exceeded with url: /_alive_7ed7bedd-3b38-4583-89f1-88da68f7f5ff (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001C83474FC70>: Failed to establish a new connection: [WinError 10049] La dirección solicitada no es válida en este contexto'))
+[1;31mMaxRetryError[0m: HTTPConnectionPool(host='0.0.0.0', port=9000): Max retries exceeded with url: /_alive_9fac62bc-d431-4318-8d9a-f440f80d6a53 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002188BDF9130>: Failed to establish a new connection: [WinError 10049] La dirección solicitada no es válida en este contexto'))
 
 During handling of the above exception, another exception occurred:
 
 [1;31mConnectionError[0m                           Traceback (most recent call last)
-Cell [1;32mIn[11], line 330[0m
-[0;32m    319[0m     [38;5;28;01mreturn[39;00m {
-[0;32m    320[0m         [38;5;124m'[39m[38;5;124mdata[39m[38;5;124m'[39m: traces,
-[0;32m    321[0m         [38;5;124m'[39m[38;5;124mlayout[39m[38;5;124m'[39m: go[38;5;241m.[39mLayout(
+Cell [1;32mIn[11], line 328[0m
+[0;32m    317[0m     [38;5;28;01mreturn[39;00m {
+[0;32m    318[0m         [38;5;124m'[39m[38;5;124mdata[39m[38;5;124m'[39m: traces,
+[0;32m    319[0m         [38;5;124m'[39m[38;5;124mlayout[39m[38;5;124m'[39m: go[38;5;241m.[39mLayout(
 [1;32m   (...)[0m
-[0;32m    325[0m         )
-[0;32m    326[0m     }
-[0;32m    328[0m [38;5;28;01mif[39;00m [38;5;18m__name__[39m [38;5;241m==[39m [38;5;124m'[39m[38;5;124m__main__[39m[38;5;124m'[39m:
-[0;32m    329[0m     [38;5;66;03m#app.run_server(debug=True) # <- For testing purposes[39;00m
-[1;32m--> 330[0m     [43mapp[49m[38;5;241;43m.[39;49m[43mrun_server[49m[43m([49m[43mdebug[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m[43m [49m[43mhost[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43m0.0.0.0[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mport[49m[38;5;241;43m=[39;49m[38;5;241;43m9000[39;49m[43m)[49m [38;5;66;03m# <- To Dockerize the Dash[39;00m
+[0;32m    323[0m         )
+[0;32m    324[0m     }
+[0;32m    326[0m [38;5;28;01mif[39;00m [38;5;18m__name__[39m [38;5;241m==[39m [38;5;124m'[39m[38;5;124m__main__[39m[38;5;124m'[39m:
+[0;32m    327[0m     [38;5;66;03m#app.run_server(debug=True) # <- For testing purposes[39;00m
+[1;32m--> 328[0m     [43mapp[49m[38;5;241;43m.[39;49m[43mrun_server[49m[43m([49m[43mdebug[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m[43m [49m[43mhost[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43m0.0.0.0[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mport[49m[38;5;241;43m=[39;49m[38;5;241;43m9000[39;49m[43m)[49m [38;5;66;03m# <- To Dockerize the Dash[39;00m
 
 File [1;32mc:\Users\Sandra\anaconda3\envs\dataviz_venv\lib\site-packages\dash\dash.py:2175[0m, in [0;36mDash.run_server[1;34m(self, *args, **kwargs)[0m
 [0;32m   2169[0m [38;5;28;01mdef[39;00m [38;5;21mrun_server[39m([38;5;28mself[39m, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs):
@@ -618,5 +616,5 @@ File [1;32mc:\Users\Sandra\anaconda3\envs\dataviz_venv\lib\site-packages\reques
 [0;32m    521[0m [38;5;28;01mexcept[39;00m ClosedPoolError [38;5;28;01mas[39;00m e:
 [0;32m    522[0m     [38;5;28;01mraise[39;00m [38;5;167;01mConnectionError[39;00m(e, request[38;5;241m=[39mrequest)
 
-[1;31mConnectionError[0m: HTTPConnectionPool(host='0.0.0.0', port=9000): Max retries exceeded with url: /_alive_7ed7bedd-3b38-4583-89f1-88da68f7f5ff (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001C83474FC70>: Failed to establish a new connection: [WinError 10049] La dirección solicitada no es válida en este contexto'))
+[1;31mConnectionError[0m: HTTPConnectionPool(host='0.0.0.0', port=9000): Max retries exceeded with url: /_alive_9fac62bc-d431-4318-8d9a-f440f80d6a53 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002188BDF9130>: Failed to establish a new connection: [WinError 10049] La dirección solicitada no es válida en este contexto'))
 
