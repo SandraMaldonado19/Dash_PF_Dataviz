@@ -54,6 +54,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -65,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Dash Anomalías de temperatura" href="timeseries.html" />
+    <link rel="next" title="Dash Anomalías de temperatura" href="EDA_Dash.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -167,12 +168,9 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="timeseries.html">Dash Anomalías de temperatura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EDA_Dash.html">Dash Anomalías de temperatura</a></li>
 
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="timeseries.html">Construcción del dash</a></li>
 </ul>
 
     </div>
@@ -374,12 +372,9 @@ document.write(`
 <p>En este documento se presentan los resultados de la asignación final del curso de Visualización de datos con Python y R.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="timeseries.html">Dash Anomalías de temperatura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="timeseries.html#construccion-del-dash">Construcción del dash</a></li>
-<li class="toctree-l1"><a class="reference internal" href="timeseries.html#modelos-predictivos">Modelos predictivos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="timeseries.html#suavizacion-exponencial">Suavización exponencial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="timeseries.html#regresion-polinomica">Regresión polinómica</a></li>
-<li class="toctree-l1"><a class="reference internal" href="timeseries.html#codigo-unificado">Código unificado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EDA_Dash.html">Dash Anomalías de temperatura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EDA_Dash.html#analisis-exploratorio-de-datos-eda">Análisis Exploratorio de Datos - EDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeseries.html">Construcción del dash</a></li>
 </ul>
 </div>
 </section>
@@ -415,7 +410,7 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
-       href="timeseries.html"
+       href="EDA_Dash.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
